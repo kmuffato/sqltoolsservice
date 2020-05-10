@@ -30,6 +30,8 @@ namespace Microsoft.SqlTools.ServiceLayer.DacFx
         {
             DacPackage dacpac = DacPackage.Load(this.Parameters.PackageFilePath);
             DacDeployOptions options = this.GetDefaultDeployOptions();
+            options.SqlCommandVariableValues = this.Parameters.SqlCommandVariableValues;
+
             this.DacServices.Deploy(dacpac, this.Parameters.DatabaseName, this.Parameters.UpgradeExisting, options, this.CancellationToken);
         }
     }
